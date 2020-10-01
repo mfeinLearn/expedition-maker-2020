@@ -1,0 +1,70 @@
+<h2>New Expedition Form</h2>
+
+<!-- {
+    expedition: {
+        name: 'Something',
+        description: 'Some Description',
+        length: 4.0,
+        difficulty: 'Easy'
+    }
+}
+
+params[:expedition] -->
+
+
+<form action="/expeditions" method="POST">
+      <input name="authenticity_token" value="<%= form_authenticity_token %>" type="hidden">
+    <div>
+        <label for="expedition_name"><label>
+            <div>
+                <input type="text" name="expedition[name]" value="<%= @expedition.name %>"
+                  placeholder= "Name" />
+            </div>
+    </div>
+    <div>
+        <label for="expedition_description">Description<label>
+            <div>
+                <textarea name="expedition[description]" placeholder="Description"><%=
+                    @expedition.description %></textarea>
+            </div>
+    </div>
+
+    <div>
+        <label for="expedition_length"><label>
+            <div>
+                <input type="number" placeholder= "1.55" step="0.01" name="expedition[length]" value="<%= @expedition.length %>" />
+            </div>
+    </div>
+    <div>
+        <label for="expedition_difficulty">Difficulty<label>
+            <div>
+                <input name="expedition[difficulty]" placeholder="Easy" value="<%=@expedition.difficulty %>" />
+            </div>
+    </div>
+
+    <div>
+        <label for="expedition_equipment_ids">Select Equipment</label>
+        <div>
+        <% @equipment.each do |equipment| %>
+            <input type="checkbox" name="expedition[equipment_ids][]" value="<%=equipment.id%>"><%= equipment.name%></input>
+        <%end%>
+        </div>
+    <div>
+        <label for="expedition_equipment">Add New Equipment</label>
+    </div>
+
+        <% 5.times.each do %>
+        <div>
+            <input name="expedition[equipment][][name]" placeholder="Equipment Name" />
+        </div>
+        <% end %>
+
+    </div>
+    <input type="submit" value="Create Expedition">
+</form>
+
+<!-- GET  /expeditions
+GET  /expeditions/new  /// get new form
+GET  /expeditions/:id
+POST /expeditions we want to make a post route to the collection ///// we are making a new expedition that is then appended to
+// the collection of expeditions  -->

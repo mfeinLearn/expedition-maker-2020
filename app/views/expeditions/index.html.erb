@@ -1,0 +1,22 @@
+<h1>All My Expeditions</h1>
+
+<%= link_to "Create New Expedition", new_expedition_path %>
+
+<% @expeditions.each do |expedition| %>
+
+    <div>
+        <h3><%= expedition.name%></h3>
+        <p>Length: <%= expedition.description %> </p>
+        <p>Length: <%= expedition.length %> KM </p>
+        <p>Difficulty: <%= expedition.difficulty %></p>
+        <%if expedition.equipment.count > 0%>
+        <p>Required Equipment</p>
+    <ul>
+        <%expedition.equipment.each do |equipment|%>
+            <li><%=equipment.name%></li>
+        <%end%>
+    </ul>
+        <%end%>
+    </div>
+
+<% end %>
